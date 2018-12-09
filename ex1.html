@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>BlackList URL Example</title>
+    <script src="https://browser.sentry-cdn.com/4.4.1/bundle.min.js" crossorigin="anonymous"></script>
+    <script>
+        Sentry.init({
+            dsn: 'https://deffb133320d4478b203d8e37f481fee@sentry.io/1339741',
+            release: "1.1",
+            blacklistUrls: ['blacklist.js']
+        });
+    </script>
+</head>
+<body>
+    <p>
+        <button id="btn">Send</button>
+    </p>
+<pre>
+Sentry.init({
+    dsn: 'https://deffb133320d4478b203d8e37f481fee@sentry.io/1339741',
+    release: "1.1"
+});
+</pre>
+</body>
+</html>
+<script src="blacklist.js" crossorigin="anonymous"></script>
+<script src="sendErrors.js" crossorigin="anonymous"></script>
+<script>
+    var obj = {};
+    obj.invalidFunction(); // this error should always be reported to Sentry
+</script>
