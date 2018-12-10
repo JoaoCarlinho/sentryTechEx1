@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <style>
+        body{
+            text-align: center;
+        }
+
+        button{
+            height:60px;
+            width: 100px;
+            font-size: 3em;
+            border-radius:15px;
+        }
+    </style>
     <title>BlackList URL Example</title>
     <script src="https://browser.sentry-cdn.com/4.4.1/bundle.min.js" crossorigin="anonymous"></script>
     <script>
@@ -12,15 +24,24 @@
     </script>
 </head>
 <body>
-    <p>
-        <button id="btn">Send</button>
-    </p>
-<pre>
-Sentry.init({
-    dsn: 'https://deffb133320d4478b203d8e37f481fee@sentry.io/1339741',
-    release: "1.1"
-});
-</pre>
+        <div style="width:500px; text-align: left; margin:0 auto;">
+            <p>
+                Click the button below to create errors originating from two files:
+                <ul>
+                    <li>sendErrors.js</li>
+                    <li>blacklist.js</li>
+                </ul>
+                The network tab of the developer tools with show the errors from the html file and sendErrors.js are being reported to Sentry.  This is a result of the following configuration in Sentry.init:
+            </p>
+            <pre>
+            Sentry.init({
+                dsn: 'https://deffb133320d4478b203d8e37f481fee@sentry.io/1339741',
+                release: "1.1",
+                blacklistUrls: ['blacklist.js']
+            });
+            </pre>
+        </div>
+    <button id="btn">Test</button>
 </body>
 </html>
 <script src="blacklist.js" crossorigin="anonymous"></script>
